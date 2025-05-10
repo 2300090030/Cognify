@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cognifyz - Task 2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #1e293b, #0f172a);
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: #f1f5f9;
+    }
+
+    h1 {
+      font-size: 42px;
+      color: #38bdf8;
+    }
+
+    h2 {
+      font-size: 18px;
+      color: #94a3b8;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #1e293b;
+      width: 100%;
+      max-width: 500px;
+      border-radius: 16px;
+      padding: 30px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      margin-bottom: 30px;
+      text-align: center;
+      border: 1px solid #334155;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card h3 span {
+      display: inline-block;
+      background: #0ea5e9;
+      color: white;
+      font-weight: bold;
+      width: 28px;
+      height: 28px;
+      line-height: 28px;
+      text-align: center;
+      border-radius: 6px;
+      margin-right: 10px;
+    }
+
+    button {
+      padding: 12px 24px;
+      font-size: 16px;
+      font-weight: 500;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn-primary {
+      background: #4f46e5;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #4338ca;
+      transform: scale(1.05);
+    }
+
+    .btn-accent {
+      background: #0ea5e9;
+      color: white;
+    }
+
+    .btn-accent:hover {
+      background: #0284c7;
+      transform: scale(1.05);
+    }
+
+    input[type="number"] {
+      width: 110px;
+      padding: 10px;
+      margin: 5px;
+      border: 1px solid #64748b;
+      background-color: #0f172a;
+      color: white;
+      border-radius: 6px;
+      text-align: center;
+      font-size: 16px;
+    }
+
+    #result {
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #fcd34d;
+    }
+
+    @media (max-width: 520px) {
+      .card {
+        width: 90%;
+        padding: 20px;
+      }
+
+      input[type="number"] {
+        width: 85px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Cognifyz</h1>
+  <h2>Where Data Meets Intelligence</h2>
+
+  <!-- Task 1: Color Change Button -->
+  <div class="card">
+    <h3><span>1</span>Clickable Color Change Button</h3>
+    <button class="btn-accent" onclick="changeColor(this)">Click Me!</button>
+  </div>
+
+  <!-- Task 2: Time-Based Greeting -->
+  <div class="card">
+    <h3><span>2</span>Time-Based Greeting</h3>
+    <button class="btn-primary" onclick="greetUser()">Greet Me</button>
+  </div>
+
+  <!-- Task 3: Basic Calculator -->
+  <div class="card">
+    <h3><span>3</span>Basic Calculator</h3>
+    <input type="number" id="num1" placeholder="Number 1">
+    <input type="number" id="num2" placeholder="Number 2"><br>
+    <button class="btn-primary" onclick="addNumbers()">Add Numbers</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    function changeColor(button) {
+      const colors = ["#0ea5e9", "#4f46e5", "#10b981", "#f97316", "#e11d48"];
+      let newColor;
+      do {
+        newColor = colors[Math.floor(Math.random() * colors.length)];
+      } while (button.style.backgroundColor === newColor);
+      button.style.backgroundColor = newColor;
+    }
+
+    function greetUser() {
+      const hour = new Date().getHours();
+      let message = "Hello!";
+      if (hour < 12) message = "Good Morning!";
+      else if (hour < 18) message = "Good Afternoon!";
+      else message = "Good Evening!";
+      alert(message);
+    }
+
+    function addNumbers() {
+      const num1 = parseFloat(document.getElementById("num1").value);
+      const num2 = parseFloat(document.getElementById("num2").value);
+      const resultEl = document.getElementById("result");
+
+      if (!isNaN(num1) && !isNaN(num2)) {
+        resultEl.textContent = `Result: ${num1 + num2}`;
+      } else {
+        resultEl.textContent = "Please enter valid numbers.";
+      }
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Image Gallery & Slideshow</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background: #111;
+      color: white;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    /* ===== Image Gallery ===== */
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 2rem auto;
+      gap: 1rem;
+      max-width: 1200px;
+    }
+
+    .gallery img {
+      width: 250px;
+      height: 180px;
+      object-fit: cover;
+      cursor: pointer;
+      border: 3px solid #fff;
+      transition: transform 0.3s ease;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+
+    /* Lightbox Overlay */
+    .lightbox {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .lightbox img {
+      max-width: 95%;
+      max-height: 90%;
+      border: 4px solid white;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    /* ===== Image Slideshow ===== */
+    .slideshow {
+      max-width: 100%;
+      height: 400px;
+      margin: 3rem auto;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slides {
+      width: 500%;
+      height: 100%;
+      display: flex;
+      animation: slide 20s infinite;
+    }
+
+    .slides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes slide {
+      0%   {margin-left: 0%;}
+      20%  {margin-left: 0%;}
+      25%  {margin-left: -100%;}
+      45%  {margin-left: -100%;}
+      50%  {margin-left: -200%;}
+      70%  {margin-left: -200%;}
+      75%  {margin-left: -300%;}
+      95%  {margin-left: -300%;}
+      100% {margin-left: -400%;}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>📸 Image Gallery</h1>
+  <div class="gallery">
+    <a href="#img1"><img src="https://picsum.photos/id/1015/600/400" alt="Image 1"/></a>
+    <a href="#img2"><img src="https://picsum.photos/id/1016/600/400" alt="Image 2"/></a>
+    <a href="#img3"><img src="https://picsum.photos/id/1025/600/400" alt="Image 3"/></a>
+    <a href="#img4"><img src="https://picsum.photos/id/1031/600/400" alt="Image 4"/></a>
+  </div>
+
+  <!-- Lightbox overlays -->
+  <div id="img1" class="lightbox">
+    <a href="#"><img src="https://picsum.photos/id/1015/1000/700" alt=""></a>
+  </div>
+  <div id="img2" class="lightbox">
+    <a href="#"><img src="https://picsum.photos/id/1016/1000/700" alt=""></a>
+  </div>
+  <div id="img3" class="lightbox">
+    <a href="#"><img src="https://picsum.photos/id/1025/1000/700" alt=""></a>
+  </div>
+  <div id="img4" class="lightbox">
+    <a href="#"><img src="https://picsum.photos/id/1031/1000/700" alt=""></a>
+  </div>
+
+  <h1>🎞️ Slideshow</h1>
+  <div class="slideshow">
+    <div class="slides">
+      <img src="https://picsum.photos/id/1041/1200/400" alt="Slide 1">
+      <img src="https://picsum.photos/id/1042/1200/400" alt="Slide 2">
+      <img src="https://picsum.photos/id/1043/1200/400" alt="Slide 3">
+      <img src="https://picsum.photos/id/1044/1200/400" alt="Slide 4">
+      <img src="https://picsum.photos/id/1045/1200/400" alt="Slide 5">
+    </div>
+  </div>
+
+</body>
+</html>
